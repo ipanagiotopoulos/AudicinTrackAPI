@@ -63,6 +63,14 @@ However if you want to run the application from any terminal, like zsh, or ssh y
 mvn clean install
 ```
 
+or 
+
+```shell
+mvn clean install -DskipTests
+```
+
+if you want to skip JUNIT tests
+
 To fire up the server on port **8000** or any other port of you liking:
 
 ```shell

@@ -9,7 +9,9 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import java.util.ArrayList;
 import java.util.List;
@@ -37,9 +39,11 @@ public class Track {
     @Enumerated(EnumType.STRING)
     private MusicGenre genre;
 
-    @OneToMany(mappedBy="track", cascade=CascadeType.ALL)
-    private List<License> licenses = new ArrayList<>();
+    @OneToOne(mappedBy="track", cascade=CascadeType.ALL)
+    @JoinColumn(nullable = true)
+    private License license;
 
-    @Column(nullable = false, unique = true, length = 64)
+    @Column(nullable = true, unique = true, length = 64)
     private String licenseHash;
+
 }

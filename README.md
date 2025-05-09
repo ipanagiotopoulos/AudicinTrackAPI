@@ -148,9 +148,3 @@ In this Swagger File you will find 4 folders for:
    Request parameters are validated using annotations like `@NotNull` to catch errors early.
 
 
-
-
-
-## Copyright
-
-Released under the Apache License 2.0. See the [LICENSE](https://github.com/codecentric/springboot-sample-app/blob/master/LICENSE) file.

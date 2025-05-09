@@ -1,4 +1,4 @@
-package com.audicin.backend.track.api.security.dtos;
+package com.audicin.backend.track.api.security.dtos.request;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,7 +9,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class LoginUserDto {
+public class RegisterUserDto {
     private String email;
     private String password;
+    private String fullName;
 }

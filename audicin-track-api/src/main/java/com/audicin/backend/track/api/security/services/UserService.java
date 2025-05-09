@@ -1,6 +1,6 @@
 package com.audicin.backend.track.api.security.services;
 
-import com.audicin.backend.track.api.security.dtos.RegisterUserDto;
+import com.audicin.backend.track.api.security.dtos.request.RegisterUserDto;
 import com.audicin.backend.track.api.security.user.models.Role;
 import com.audicin.backend.track.api.security.user.models.RoleEnum;
 import com.audicin.backend.track.api.security.user.models.User;

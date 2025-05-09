@@ -1,9 +1,10 @@
 package com.audicin.backend.track.api.controllers.auth;
 
 
-import com.audicin.backend.track.api.security.dtos.LoginUserDto;
-import com.audicin.backend.track.api.security.dtos.RegisterUserDto;
-import com.audicin.backend.track.api.security.responses.LoginResponse;
+import com.audicin.backend.track.api.security.dtos.request.LoginUserDto;
+import com.audicin.backend.track.api.security.dtos.request.RegisterUserDto;
+import com.audicin.backend.track.api.security.dtos.response.LoginResponseDto;
+import com.audicin.backend.track.api.security.dtos.response.RegisteredUserResponseDto;
 import com.audicin.backend.track.api.security.services.AuthenticationService;
 import com.audicin.backend.track.api.security.services.JwtService;
 import com.audicin.backend.track.api.security.user.models.User;
@@ -26,25 +27,24 @@ public class AuthController {
     }
 
     @PostMapping("/signup")
-    public ResponseEntity<User> register(
+    public ResponseEntity<RegisteredUserResponseDto> register(
             @RequestBody RegisterUserDto registerUserDto) {
-        User registeredUser = authenticationService.signup(registerUserDto);
+        RegisteredUserResponseDto registeredUser = authenticationService.signup(registerUserDto);
 
         return ResponseEntity.ok(registeredUser);
     }
 
     @PostMapping("/login")
-    public ResponseEntity<LoginResponse> authenticate(
+    public ResponseEntity<LoginResponseDto> authenticate(
             @RequestBody LoginUserDto loginUserDto) {
 
         User authenticatedUser =
                 authenticationService.authenticate(loginUserDto);
-        System.out.println("auth user"+authenticatedUser);
         String jwtToken = jwtService.generateToken(authenticatedUser);
 
-        LoginResponse loginResponse = LoginResponse.builder()
-                .token(jwtToken)
-                .expiresIn(jwtService.getExpirationTime()).build();
+        LoginResponseDto loginResponse =
+                LoginResponseDto.builder().token(jwtToken)
+                        .expiresIn(jwtService.getExpirationTime()).build();
 
         return ResponseEntity.ok(loginResponse);
     }

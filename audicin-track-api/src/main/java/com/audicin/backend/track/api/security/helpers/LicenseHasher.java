@@ -9,7 +9,7 @@ public class LicenseHasher {
      * Hashes the license data (partner, track, and license date)
      *
      * @param data the data to be hashed (partner email, track title, license
-     *            date, etc.)
+     *             date, etc.)
      * @return a hashed string (Base64 encoded)
      */
     public static String hashLicense(String data) {

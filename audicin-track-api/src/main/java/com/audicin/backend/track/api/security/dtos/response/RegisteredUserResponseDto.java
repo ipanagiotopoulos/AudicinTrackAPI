@@ -1,5 +1,4 @@
-package com.audicin.backend.track.api.security.responses;
-
+package com.audicin.backend.track.api.security.dtos.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -10,7 +9,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class LoginResponse {
-    private String token;
-    private long expiresIn;
+public class RegisteredUserResponseDto {
+    private String email;
+    private String fullName;
 }
+

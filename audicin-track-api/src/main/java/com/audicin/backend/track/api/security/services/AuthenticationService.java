@@ -1,8 +1,9 @@
 package com.audicin.backend.track.api.security.services;
 
 
-import com.audicin.backend.track.api.security.dtos.LoginUserDto;
-import com.audicin.backend.track.api.security.dtos.RegisterUserDto;
+import com.audicin.backend.track.api.security.dtos.request.LoginUserDto;
+import com.audicin.backend.track.api.security.dtos.request.RegisterUserDto;
+import com.audicin.backend.track.api.security.dtos.response.RegisteredUserResponseDto;
 import com.audicin.backend.track.api.security.user.models.Role;
 import com.audicin.backend.track.api.security.user.models.RoleEnum;
 import com.audicin.backend.track.api.security.user.models.User;
@@ -36,7 +37,7 @@ public class AuthenticationService {
         this.passwordEncoder = passwordEncoder;
     }
 
-    public User signup(RegisterUserDto input) {
+    public RegisteredUserResponseDto signup(RegisterUserDto input) {
         Optional<Role> optionalRole = roleRepository.findByName(RoleEnum.PARTNER);
 
         if (optionalRole.isEmpty()) {
@@ -48,8 +49,12 @@ public class AuthenticationService {
                 .password(passwordEncoder.encode(input.getPassword()))
                 .role(optionalRole.get())
                 .build();
-
-        return userRepository.save(user);
+        User savedUser = userRepository.save(user);
+        RegisteredUserResponseDto userResponse = RegisteredUserResponseDto.builder()
+                .email(savedUser.getEmail())
+                .fullName(savedUser.getEmail())
+                .build();
+        return userResponse;
     }
 
     public User authenticate(LoginUserDto input) {

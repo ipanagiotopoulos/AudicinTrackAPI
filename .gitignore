@@ -1,0 +1,78 @@
+# ========================
+# OS-specific files
+# ========================
+.DS_Store
+
+# ========================
+# Environment and config files
+# ========================
+.env
+
+
+# ========================
+# Database files (if using file-based databases like SQLite)
+# Note: In-memory DBs like "memory:myDb?cache=shared" do not need to be ignored
+# ========================
+*.db
+*.sqlite
+*.sqlite3
+*.db-journal
+*.db-wal
+*.db-shm
+audicin-track-api/memory:myDb?cache=shared
+
+# ========================
+# Build artifacts
+# ========================
+target/
+build/
+
+# Allow build/target folders in source trees (override general ignore above)
+!**/src/main/**/build/
+!**/src/test/**/build/
+!**/src/main/**/target/
+!**/src/test/**/target/
+
+# ========================
+# Maven Wrapper
+# ========================
+.mvn/wrapper/maven-wrapper.jar
+
+# ========================
+# IDE-specific files
+# ========================
+
+## IntelliJ IDEA
+.idea/
+*.iws
+*.iml
+*.ipr
+
+## Eclipse / Spring Tool Suite (STS)
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings/
+.springBeans
+.sts4-cache/
+
+## NetBeans
+nbproject/private/
+nbbuild/
+dist/
+nbdist/
+.nb-gradle/
+
+## Visual Studio Code
+.vscode/
+
+# ========================
+# Git-specific
+# ========================
+.git
+
+# ========================
+# Project-specific
+# ========================
+HELP.md

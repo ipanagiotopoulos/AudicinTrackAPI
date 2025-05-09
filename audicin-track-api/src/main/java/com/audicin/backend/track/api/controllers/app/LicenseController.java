@@ -1,10 +1,8 @@
 package com.audicin.backend.track.api.controllers.app;
 
 import com.audicin.backend.track.api.db.models.License;
-import com.audicin.backend.track.api.db.models.Track;
 import com.audicin.backend.track.api.db.service.LicenseService;
 import com.audicin.backend.track.api.dtos.response.LicenseResponseDTO;
-import com.audicin.backend.track.api.dtos.response.TrackResponseDTO;
 import com.audicin.backend.track.api.security.user.models.User;
 import jakarta.validation.constraints.NotNull;
 import java.util.ArrayList;
@@ -31,9 +29,9 @@ public class LicenseController {
         User user =
                 (User) SecurityContextHolder.getContext().getAuthentication()
                         .getPrincipal();
-        System.out.println("user id"+user.getId());
+        System.out.println("user id" + user.getId());
         List<License> licenses = licenseService.getAllLicenses(user.getId());
-        System.out.println("licenses"+licenses);
+        System.out.println("licenses" + licenses);
         List<LicenseResponseDTO> licenseDtos = new ArrayList<>();
         for (License license: licenses){
             licenseDtos.add(licenseService.toDto(license));

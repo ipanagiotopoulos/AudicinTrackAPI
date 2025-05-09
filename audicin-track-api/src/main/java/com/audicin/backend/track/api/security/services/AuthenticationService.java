@@ -25,12 +25,10 @@ public class AuthenticationService {
     private final PasswordEncoder passwordEncoder;
     private final AuthenticationManager authenticationManager;
 
-    public AuthenticationService(
-            UserRepository userRepository,
-            RoleRepository roleRepository,
-            AuthenticationManager authenticationManager,
-            PasswordEncoder passwordEncoder
-    ) {
+    public AuthenticationService(UserRepository userRepository,
+                                 RoleRepository roleRepository,
+                                 AuthenticationManager authenticationManager,
+                                 PasswordEncoder passwordEncoder) {
         this.authenticationManager = authenticationManager;
         this.userRepository = userRepository;
         this.roleRepository = roleRepository;
@@ -38,7 +36,8 @@ public class AuthenticationService {
     }
 
     public RegisteredUserResponseDto signup(RegisterUserDto input) {
-        Optional<Role> optionalRole = roleRepository.findByName(RoleEnum.PARTNER);
+        Optional<Role> optionalRole =
+                roleRepository.findByName(RoleEnum.PARTNER);
 
         if (optionalRole.isEmpty()) {
             return null;
@@ -47,23 +46,18 @@ public class AuthenticationService {
         User user = User.builder().fullName(input.getFullName())
                 .email(input.getEmail())
                 .password(passwordEncoder.encode(input.getPassword()))
-                .role(optionalRole.get())
-                .build();
+                .role(optionalRole.get()).build();
         User savedUser = userRepository.save(user);
-        RegisteredUserResponseDto userResponse = RegisteredUserResponseDto.builder()
-                .email(savedUser.getEmail())
-                .fullName(savedUser.getEmail())
-                .build();
+        RegisteredUserResponseDto userResponse =
+                RegisteredUserResponseDto.builder().email(savedUser.getEmail())
+                        .fullName(savedUser.getEmail()).build();
         return userResponse;
     }
 
     public User authenticate(LoginUserDto input) {
         authenticationManager.authenticate(
-                new UsernamePasswordAuthenticationToken(
-                        input.getEmail(),
-                        input.getPassword()
-                )
-        );
+                new UsernamePasswordAuthenticationToken(input.getEmail(),
+                        input.getPassword()));
 
         return userRepository.findByEmail(input.getEmail()).orElseThrow();
     }

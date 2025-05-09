@@ -1,9 +1,10 @@
-package com.audicin.backend.api.controllers;
+package com.audicin.backend.track.api.controllers;
 
 import static org.springframework.test.web.client.match.MockRestRequestMatchers.jsonPath;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
 import com.audicin.backend.track.api.security.dtos.request.RegisterUserDto;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
@@ -35,7 +36,8 @@ class AuthControllerTest {
                 .andExpect((ResultMatcher) jsonPath("$.email").value(
                         "partner@email.com")).andExpect(
                         (ResultMatcher) jsonPath("$.fullName").value(
-                                "partner@email.com")); // Adjust expected response
+                                "partner@email.com")); // Adjust expected
+        // response
     }
 
     public static String asJsonString(final Object obj) {

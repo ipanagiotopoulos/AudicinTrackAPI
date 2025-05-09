@@ -11,9 +11,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class LicenseDto {
 
-    @NotNull(message = "User ID is required")
+    @NotNull(message="User ID is required")
     private Integer userId;
 
-    @NotNull(message = "Track ID is required")
+    @NotNull(message="Track ID is required")
     private Integer trackId;
 }

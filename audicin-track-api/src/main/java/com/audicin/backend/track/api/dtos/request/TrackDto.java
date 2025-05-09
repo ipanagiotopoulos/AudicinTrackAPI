@@ -12,11 +12,11 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class TrackDto {
 
-    @NotBlank(message = "Title is required")
+    @NotBlank(message="Title is required")
     private String title;
 
     private String description;
 
-    @NotNull(message = "Genre is required")
+    @NotNull(message="Genre is required")
     private MusicGenre genre;
 }

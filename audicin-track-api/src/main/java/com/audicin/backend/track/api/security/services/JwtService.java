@@ -24,7 +24,8 @@ public class JwtService {
     @Autowired
     public JwtService(Dotenv dotenv) {
         this.secretKey = dotenv.get("security.jwt.secret-key");
-        this.jwtExpiration = Long.parseLong(dotenv.get("security.jwt.expiration-time"));
+        this.jwtExpiration =
+                Long.parseLong(dotenv.get("security.jwt.expiration-time"));
     }
 
 

@@ -23,7 +23,7 @@ import org.hibernate.annotations.CreationTimestamp;
 public class License {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
-    @Column(nullable=false, name = "license_id")
+    @Column(nullable=false, name="license_id")
     private Integer Id;
 
     @ManyToOne
@@ -44,11 +44,13 @@ public class License {
     public License(User partner, Track track) {
         this.partner = partner;
         this.track = track;
-        this.licenseHash = LicenseHasher.hashLicense(partner.getEmail()+partner.getId()+track.getId());
+        this.licenseHash = LicenseHasher.hashLicense(
+                partner.getEmail() + partner.getId() + track.getId());
         this.licenseDate = new Date();
     }
 
     public void setLicenseHash(String licenseHash) {
-        this.licenseHash = LicenseHasher.hashLicense(partner.getEmail()+partner.getId()+track.getId());
+        this.licenseHash = LicenseHasher.hashLicense(
+                partner.getEmail() + partner.getId() + track.getId());
     }
 }

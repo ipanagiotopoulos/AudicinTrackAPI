@@ -10,11 +10,8 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
-import java.util.ArrayList;
-import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -27,11 +24,11 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@ToString(exclude = "license")
+@ToString(exclude="license")
 public class Track {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
-    @Column(nullable=false,name="track_id")
+    @Column(nullable=false, name="track_id")
     private Integer Id;
 
     private String title;
@@ -42,10 +39,10 @@ public class Track {
     private MusicGenre genre;
 
     @OneToOne(mappedBy="track", cascade=CascadeType.ALL)
-    @JoinColumn(nullable = true)
+    @JoinColumn(nullable=true)
     private License license;
 
-    @Column(nullable = true, unique = true, length = 64)
+    @Column(nullable=true, unique=true, length=64)
     private String licenseHash;
 
 }

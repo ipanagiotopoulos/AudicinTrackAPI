@@ -3,7 +3,6 @@ package com.audicin.backend.track.api.security.setup;
 import com.audicin.backend.track.api.security.user.models.Role;
 import com.audicin.backend.track.api.security.user.repositories.RoleRepository;
 import com.audicin.backend.track.api.security.user.models.RoleEnum;
-
 import java.util.Arrays;
 import java.util.Map;
 import java.util.Optional;

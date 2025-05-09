@@ -23,12 +23,9 @@ public class TrackResponseDTO {
 
 
     private TrackResponseDTO toDto(Track track) {
-        return TrackResponseDTO.builder()
-                .id(track.getId())
-                .title(track.getTitle())
-                .description(track.getDescription())
-                .genre(track.getGenre())
-                .build();
+        return TrackResponseDTO.builder().id(track.getId())
+                .title(track.getTitle()).description(track.getDescription())
+                .genre(track.getGenre()).build();
     }
 
 }

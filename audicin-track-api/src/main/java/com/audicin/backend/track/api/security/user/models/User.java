@@ -31,7 +31,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 public class User implements UserDetails {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
-    @Column(nullable=false,name = "user_id")
+    @Column(nullable=false, name="user_id")
     private Integer id;
 
     @Column(nullable=false)

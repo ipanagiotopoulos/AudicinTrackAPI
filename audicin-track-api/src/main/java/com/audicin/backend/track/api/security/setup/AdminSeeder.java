@@ -70,6 +70,7 @@ public class AdminSeeder implements ApplicationListener<ContextRefreshedEvent> {
                 .password(passwordEncoder.encode(userDto.getPassword()))
                 .build();
 
-        userRepository.save(user);
+        User user1 = userRepository.save(user);
+        System.out.println("Admin number 1 saved"+user1.toString());
     }
 }

@@ -39,11 +39,11 @@ public class TrackControler {
     @PreAuthorize("hasRole('PARTNER')")
     public List<TrackResponseDTO> getTrackPerPartner(Principal principal) {
         List<Track> tracks = trackRepository.findAll();
-        List<TrackResponseDTO> dtos = new ArrayList<>();
+        List<TrackResponseDTO> trackDtos = new ArrayList<>();
         for (Track track: tracks){
-            dtos.add(trackService.toDto(track));
+            trackDtos.add(trackService.toDto(track));
         }
-        return dtos;
+        return trackDtos;
     }
 
 

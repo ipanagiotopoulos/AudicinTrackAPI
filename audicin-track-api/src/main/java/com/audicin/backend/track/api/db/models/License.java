@@ -41,11 +41,11 @@ public class License {
     @Column(nullable=true, unique=true, length=64)
     private String licenseHash;
 
-    public License(User partner, Track track, Date licenseDate) {
+    public License(User partner, Track track) {
         this.partner = partner;
         this.track = track;
-        this.licenseDate = licenseDate;
         this.licenseHash = LicenseHasher.hashLicense(partner.getEmail()+partner.getId()+track.getId());
+        this.licenseDate = new Date();
     }
 
     public void setLicenseHash(String licenseHash) {

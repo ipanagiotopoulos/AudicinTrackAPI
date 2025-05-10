@@ -21,11 +21,4 @@ public class TrackResponseDTO {
 
     private MusicGenre genre;
 
-
-    private TrackResponseDTO toDto(Track track) {
-        return TrackResponseDTO.builder().id(track.getId())
-                .title(track.getTitle()).description(track.getDescription())
-                .genre(track.getGenre()).build();
-    }
-
 }
